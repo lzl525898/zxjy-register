@@ -1,0 +1,24 @@
+server:
+  port: 7000
+  
+spring:  application:    name: ZXJY-REGISTER
+    #禁用thymeleaf缓存
+  thymeleaf:
+    cache: false
+  #是否支持批量上传(默认值true)
+  servlet:
+    multipart:
+      enabled: true
+      #上传文件最大为800M
+      max-file-size: 800MB
+      #上传请求最大为800M（默认值10M根据自身业务自行控制即可）
+      max-request-size: 800MB
+      #文件大小阈值，当大于这个阈值时将写入到磁盘，否则存在内存中，（默认值0一般情况下不用特意修改）
+      file-size-threshold: 0
+      #判断是否要延迟解析文件（相当于懒加载，一般情况下不用特意修改）
+      resolve-lazily: false
+      
+eureka:  instance:    hostname: 8.131.96.180
+  client:    register-with-eureka: false
+    fetch-registry: false
+    service-url:      defaultZone: http://${eureka.instance.hostname}/${server.port}/eureka/  server:    enable-self-preservation: false #自我保护模式关闭
